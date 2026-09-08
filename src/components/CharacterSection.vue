@@ -10,14 +10,14 @@ const characters = [
     { name: "Hysilens",  path: "Nihility",    element: "Physical",  image: "/images/characters/hysilens.webp"  },
 ];
 
-const elementColors: Record<string, string> = {
-    Lightning: "#a78bfa",
-    Wind:      "#34d399",
-    Fire:      "#fb923c",
-    Ice:       "#67e8f9",
-    Physical:  "#e2e8f0",
-    Quantum:   "#818cf8",
-    Imaginary: "#fbbf24",
+const elementIcons: Record<string, string> = {
+    Lightning: "/images/element/lightning.webp",
+    Wind:      "/images/element/wind.webp",
+    Fire:      "/images/element/fire.webp",
+    Ice:       "/images/element/ice.webp",
+    Physical:  "/images/element/physical.webp",
+    Quantum:   "/images/element/quantum.webp",
+    Imaginary: "/images/element/imaginary.webp",
 };
 </script>
 
@@ -51,10 +51,14 @@ const elementColors: Record<string, string> = {
                     <div class="char-info">
                         <span class="char-name">{{ char.name }}</span>
                         <div class="char-meta">
-                            <span
-                                class="char-element"
-                                :style="{ color: elementColors[char.element] }"
-                            >● {{ char.element }}</span>
+                            <div class="char-element">
+                                <img
+                                    :src="elementIcons[char.element]"
+                                    :alt="char.element"
+                                    class="char-element-icon"
+                                />
+                                <span>{{ char.element }}</span>
+                            </div>
                             <span class="char-path">{{ char.path }}</span>
                         </div>
                     </div>
@@ -167,9 +171,20 @@ const elementColors: Record<string, string> = {
 }
 
 .char-element {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
     font-size: 0.75rem;
     font-weight: 500;
+    color: #cbd5e1;
 }
+
+.char-element-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
 
 .char-path {
     font-size: 0.65rem;
