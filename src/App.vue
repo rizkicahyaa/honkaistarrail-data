@@ -5,7 +5,7 @@ import CharacterSection from "./components/CharacterSection.vue";
 </script>
 
 <template>
-    <div class="min-h-screen bg-slate-950 text-white">
+    <div class="min-h-screen bg-slate-950 text-white" style="padding-top: 4rem">
         <Navbar />
         <HeroCarousel />
         <CharacterSection />

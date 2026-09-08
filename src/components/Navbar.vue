@@ -69,6 +69,11 @@ const navLinks = [
 <style scoped>
 /* Navbar */
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
     background-color: #0f172a;
     border-bottom: 1px solid #334155;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
