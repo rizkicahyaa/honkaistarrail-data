@@ -1,22 +1,22 @@
 <script setup lang="ts">
 const characters = [
-    { name: "Acheron", path: "Nihility", element: "Lightning", image: "/images/characters/acheron.webp" },
-    { name: "Bronya", path: "Harmony", element: "Wind", image: "/images/characters/Bronya.webp" },
-    { name: "Ruan Mei", path: "Harmony", element: "Ice", image: "/images/characters/ruan-mei.webp" },
-    { name: "Firefly", path: "Destruction", element: "Fire", image: "/images/characters/firefly.webp" },
-    { name: "Castorice", path: "Remembrance", element: "Quantum", image: "/images/characters/castorice.webp" },
-    { name: "Yao Guang", path: "Elation", element: "Physical", image: "/images/characters/yao-guang.webp" },
-    { name: "Cyrene", path: "Remembrance", element: "Ice", image: "/images/characters/cyrene.webp" },
-    { name: "Hysilens", path: "Nihility", element: "Physical", image: "/images/characters/hysilens.webp" },
+    { name: "Acheron",   path: "Nihility",    element: "Lightning", image: "/images/characters/acheron.webp"   },
+    { name: "Bronya",    path: "Harmony",     element: "Wind",      image: "/images/characters/Bronya.webp"    },
+    { name: "Ruan Mei",  path: "Harmony",     element: "Ice",       image: "/images/characters/ruan-mei.webp"  },
+    { name: "Firefly",   path: "Destruction", element: "Fire",      image: "/images/characters/firefly.webp"   },
+    { name: "Castorice", path: "Remembrance", element: "Quantum",   image: "/images/characters/castorice.webp" },
+    { name: "Yao Guang", path: "Elation",     element: "Physical",  image: "/images/characters/yao-guang.webp" },
+    { name: "Cyrene",    path: "Remembrance", element: "Ice",       image: "/images/characters/cyrene.webp"    },
+    { name: "Hysilens",  path: "Nihility",    element: "Physical",  image: "/images/characters/hysilens.webp"  },
 ];
 
 const elementColors: Record<string, string> = {
     Lightning: "#a78bfa",
-    Wind: "#34d399",
-    Fire: "#fb923c",
-    Ice: "#67e8f9",
-    Physical: "#e2e8f0",
-    Quantum: "#818cf8",
+    Wind:      "#34d399",
+    Fire:      "#fb923c",
+    Ice:       "#67e8f9",
+    Physical:  "#e2e8f0",
+    Quantum:   "#818cf8",
     Imaginary: "#fbbf24",
 };
 </script>
@@ -24,6 +24,7 @@ const elementColors: Record<string, string> = {
 <template>
     <section class="char-section">
         <div class="char-container">
+
             <!-- Header -->
             <div class="char-header">
                 <h2 class="char-title">Characters</h2>
@@ -32,17 +33,28 @@ const elementColors: Record<string, string> = {
 
             <!-- Grid -->
             <div class="char-grid">
-                <div v-for="char in characters" :key="char.name" class="char-card">
+                <div
+                    v-for="char in characters"
+                    :key="char.name"
+                    class="char-card"
+                >
                     <!-- Image -->
                     <div class="char-img-wrap">
-                        <img :src="char.image" :alt="char.name" class="char-img" />
+                        <img
+                            :src="char.image"
+                            :alt="char.name"
+                            class="char-img"
+                        />
                     </div>
 
                     <!-- Info -->
                     <div class="char-info">
                         <span class="char-name">{{ char.name }}</span>
                         <div class="char-meta">
-                            <span class="char-element" :style="{ color: elementColors[char.element] }">● {{ char.element }}</span>
+                            <span
+                                class="char-element"
+                                :style="{ color: elementColors[char.element] }"
+                            >● {{ char.element }}</span>
                             <span class="char-path">{{ char.path }}</span>
                         </div>
                     </div>
@@ -53,11 +65,13 @@ const elementColors: Record<string, string> = {
             <div class="char-footer">
                 <a href="#" class="char-btn">View All Characters</a>
             </div>
+
         </div>
     </section>
 </template>
 
 <style scoped>
+/* Section */
 .char-section {
     padding: 4rem 0;
     background-color: #020617;
@@ -76,7 +90,7 @@ const elementColors: Record<string, string> = {
 }
 
 .char-title {
-    font-size: 2rem;
+    font-size: 1.875rem;
     font-weight: 700;
     color: white;
     letter-spacing: 0.05em;
@@ -96,15 +110,11 @@ const elementColors: Record<string, string> = {
 }
 
 @media (min-width: 640px) {
-    .char-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    .char-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (min-width: 1024px) {
-    .char-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
+    .char-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* Card */
@@ -129,6 +139,11 @@ const elementColors: Record<string, string> = {
     height: 100%;
     object-fit: cover;
     object-position: top;
+    transition: transform 0.5s ease;
+}
+
+.char-card:hover .char-img {
+    transform: scale(1.1);
 }
 
 /* Info */
@@ -140,7 +155,7 @@ const elementColors: Record<string, string> = {
     display: block;
     color: white;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.875rem;
     margin-bottom: 0.25rem;
 }
 
@@ -157,7 +172,7 @@ const elementColors: Record<string, string> = {
 }
 
 .char-path {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: #64748b;
     background-color: #1e293b;
     padding: 0.1rem 0.5rem;
@@ -179,9 +194,7 @@ const elementColors: Record<string, string> = {
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
-    transition:
-        background-color 0.2s,
-        color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .char-btn:hover {
@@ -189,3 +202,4 @@ const elementColors: Record<string, string> = {
     color: #020617;
 }
 </style>
+
