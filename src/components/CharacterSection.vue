@@ -19,6 +19,18 @@ const elementIcons: Record<string, string> = {
     Quantum:   "/images/element/quantum.webp",
     Imaginary: "/images/element/imaginary.webp",
 };
+
+const pathIcons: Record<string, string> = {
+    Nihility:    "/images/paths/nihility.webp",
+    Harmony:     "/images/paths/harmony.webp",
+    Destruction: "/images/paths/destruction.webp",
+    Remembrance: "/images/paths/remembrance.png",
+    Elation:     "/images/paths/elation.png",
+    Erudition:   "/images/paths/erudition.webp",
+    Hunt:        "/images/paths/hunt.webp",
+    Abundance:   "/images/paths/abundance.webp",
+    Preservation:"/images/paths/preservation.webp",
+};
 </script>
 
 <template>
@@ -59,7 +71,14 @@ const elementIcons: Record<string, string> = {
                                 />
                                 <span>{{ char.element }}</span>
                             </div>
-                            <span class="char-path">{{ char.path }}</span>
+                            <div class="char-path">
+                                <img
+                                    :src="pathIcons[char.path]"
+                                    :alt="char.path"
+                                    class="char-path-icon"
+                                />
+                                <span>{{ char.path }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -159,7 +178,7 @@ const elementIcons: Record<string, string> = {
     display: block;
     color: white;
     font-weight: 600;
-    font-size: 0.875rem;
+    font-size: 1rem;
     margin-bottom: 0.25rem;
 }
 
@@ -174,24 +193,34 @@ const elementIcons: Record<string, string> = {
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
     color: #cbd5e1;
 }
 
 .char-element-icon {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     object-fit: contain;
 }
 
 
 .char-path {
-    font-size: 0.65rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.72rem;
     color: #64748b;
     background-color: #1e293b;
-    padding: 0.1rem 0.5rem;
+    padding: 0.15rem 0.5rem;
     border-radius: 9999px;
+}
+
+.char-path-icon {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+    opacity: 0.8;
 }
 
 /* Footer */
