@@ -39,78 +39,77 @@ onUnmounted(stopAuto);
 </script>
 
 <template>
-    <section>
-        <div
-            class="carousel-wrapper"
-            @mouseenter="stopAuto"
-            @mouseleave="startAuto"
-        >
-            <!-- Image -->
-            <img
-                :src="slides[current].src"
-                :alt="slides[current].alt"
-                class="carousel-image"
-            />
+    <section class="gallery" @mouseenter="stopAuto" @mouseleave="startAuto">
+        <!-- Main Image -->
+        <div class="gallery-main">
+            <img :src="slides[current].src" :alt="slides[current].alt" class="gallery-img" />
 
-            <!-- Overlay gradient -->
-            <div class="carousel-overlay"></div>
+            <!-- Overlay -->
+            <div class="gallery-overlay"></div>
 
             <!-- Prev Button -->
-            <button class="carousel-btn carousel-btn--prev" @click="prev">
+            <button class="gallery-btn gallery-btn--prev" @click="prev">
                 <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
             </button>
 
             <!-- Next Button -->
-            <button class="carousel-btn carousel-btn--next" @click="next">
+            <button class="gallery-btn gallery-btn--next" @click="next">
                 <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
             </button>
 
-            <!-- Dot Indicators -->
-            <div class="carousel-dots">
-                <button
-                    v-for="(_, i) in slides"
-                    :key="i"
-                    class="carousel-dot"
-                    :class="{ 'carousel-dot--active': i === current }"
-                    @click="goTo(i)"
-                />
-            </div>
+            <!-- Counter -->
+            <div class="gallery-counter">{{ current + 1 }} / {{ slides.length }}</div>
+        </div>
 
-            <!-- Slide Counter -->
-            <div class="carousel-counter">
-                {{ current + 1 }} / {{ slides.length }}
-            </div>
+        <!-- Thumbnail Panel (kanan) -->
+        <div class="gallery-thumbs">
+            <button v-for="(slide, i) in slides" :key="i" class="gallery-thumb" :class="{ 'gallery-thumb--active': i === current }" @click="goTo(i)">
+                <img :src="slide.src" :alt="slide.alt" class="gallery-thumb-img" />
+                <div class="gallery-thumb-overlay"></div>
+            </button>
         </div>
     </section>
 </template>
 
 <style scoped>
-.carousel-wrapper {
+.gallery {
+    display: flex;
+    width: 80%;
+    background-color: #020617;
+    gap: 3px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+/* Main image */
+.gallery-main {
     position: relative;
-    width: 100%;
-    max-height: 560px;
+    flex: 1;
     overflow: hidden;
 }
 
-.carousel-image {
+.gallery-img {
     width: 100%;
-    max-height: 560px;
+    height: 100%;
+    max-height: 620px;
     object-fit: cover;
-    transition: all 0.5s;
+    object-position: center top;
+    display: block;
 }
 
-.carousel-overlay {
+.gallery-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, transparent 50%, rgba(2, 6, 23, 0.7) 100%);
+    background: linear-gradient(to right, transparent 60%, rgba(2, 6, 23, 0.3) 100%);
+    pointer-events: none;
 }
 
 /* Nav Buttons */
-.carousel-btn {
+.gallery-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -125,59 +124,99 @@ onUnmounted(stopAuto);
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition:
+        border-color 0.2s,
+        background 0.2s;
+}
+
+.gallery-btn:hover {
+    border-color: #fbbf24;
+    background: rgba(15, 23, 42, 0.95);
+}
+
+.gallery-btn--prev {
+    left: 1rem;
+}
+.gallery-btn--next {
+    right: 1rem;
+}
+
+/* Counter */
+.gallery-counter {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+    font-size: 0.8rem;
+    color: white;
+    background: rgba(15, 23, 42, 0.65);
+    border: 1px solid #334155;
+    padding: 0.2rem 0.75rem;
+    border-radius: 9999px;
+}
+
+/* Thumbnail panel kanan */
+.gallery-thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 160px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+    .gallery {
+        flex-direction: column;
+    }
+    .gallery-thumbs {
+        flex-direction: row;
+        width: 100%;
+        height: 80px;
+    }
+    .gallery-btn--next {
+        left: auto;
+        right: 1rem;
+    }
+}
+
+/* Thumbnail item */
+.gallery-thumb {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+    background: none;
     transition: border-color 0.2s;
 }
 
-.carousel-btn:hover {
+.gallery-thumb--active {
     border-color: #fbbf24;
 }
 
-.carousel-btn--prev {
-    left: 1rem;
+.gallery-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.3s;
 }
 
-.carousel-btn--next {
-    right: 1rem;
+.gallery-thumb:hover .gallery-thumb-img {
+    transform: scale(1.06);
 }
 
-/* Dot Indicators */
-.carousel-dots {
+.gallery-thumb-overlay {
     position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.5rem;
-    z-index: 10;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.35);
+    transition: opacity 0.2s;
 }
 
-.carousel-dot {
-    height: 8px;
-    width: 8px;
-    border-radius: 9999px;
-    border: none;
-    background: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    padding: 0;
-    transition: all 0.3s;
-}
-
-.carousel-dot--active {
-    width: 24px;
-    background: #fbbf24;
-}
-
-/* Slide Counter */
-.carousel-counter {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 10;
-    font-size: 0.875rem;
-    color: white;
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid #334155;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
+.gallery-thumb--active .gallery-thumb-overlay,
+.gallery-thumb:hover .gallery-thumb-overlay {
+    opacity: 0;
 }
 </style>
