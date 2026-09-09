@@ -1,42 +1,41 @@
 <script setup lang="ts">
 const characters = [
-    { name: "Acheron",   path: "Nihility",    element: "Lightning", image: "/images/characters/acheron.webp"   },
-    { name: "Bronya",    path: "Harmony",     element: "Wind",      image: "/images/characters/Bronya.webp"    },
-    { name: "Ruan Mei",  path: "Harmony",     element: "Ice",       image: "/images/characters/ruan-mei.webp"  },
-    { name: "Firefly",   path: "Destruction", element: "Fire",      image: "/images/characters/firefly.webp"   },
-    { name: "Castorice", path: "Remembrance", element: "Quantum",   image: "/images/characters/castorice.webp" },
-    { name: "Yao Guang", path: "Elation",     element: "Physical",  image: "/images/characters/yao-guang.webp" },
-    { name: "Cyrene",    path: "Remembrance", element: "Ice",       image: "/images/characters/cyrene.webp"    },
-    { name: "Hysilens",  path: "Nihility",    element: "Physical",  image: "/images/characters/hysilens.webp"  },
+    { name: "Acheron", path: "Nihility", element: "Lightning", image: "/images/characters/acheron.png" },
+    { name: "Bronya", path: "Harmony", element: "Wind", image: "/images/characters/bronya.png" },
+    { name: "Ruan Mei", path: "Harmony", element: "Ice", image: "/images/characters/ruan-mei.png" },
+    { name: "Firefly", path: "Destruction", element: "Fire", image: "/images/characters/firefly.png" },
+    { name: "Castorice", path: "Remembrance", element: "Quantum", image: "/images/characters/castorice.png" },
+    { name: "Yao Guang", path: "Elation", element: "Physical", image: "/images/characters/yao-guang.png" },
+    { name: "Cyrene", path: "Remembrance", element: "Ice", image: "/images/characters/cyrene.png" },
+    { name: "Hysilens", path: "Nihility", element: "Physical", image: "/images/characters/hysilens.png" },
 ];
 
 const elementIcons: Record<string, string> = {
     Lightning: "/images/element/lightning.webp",
-    Wind:      "/images/element/wind.webp",
-    Fire:      "/images/element/fire.webp",
-    Ice:       "/images/element/ice.webp",
-    Physical:  "/images/element/physical.webp",
-    Quantum:   "/images/element/quantum.webp",
+    Wind: "/images/element/wind.webp",
+    Fire: "/images/element/fire.webp",
+    Ice: "/images/element/ice.webp",
+    Physical: "/images/element/physical.webp",
+    Quantum: "/images/element/quantum.webp",
     Imaginary: "/images/element/imaginary.webp",
 };
 
 const pathIcons: Record<string, string> = {
-    Nihility:    "/images/paths/nihility.webp",
-    Harmony:     "/images/paths/harmony.webp",
+    Nihility: "/images/paths/nihility.webp",
+    Harmony: "/images/paths/harmony.webp",
     Destruction: "/images/paths/destruction.webp",
     Remembrance: "/images/paths/remembrance.png",
-    Elation:     "/images/paths/elation.png",
-    Erudition:   "/images/paths/erudition.webp",
-    Hunt:        "/images/paths/hunt.webp",
-    Abundance:   "/images/paths/abundance.webp",
-    Preservation:"/images/paths/preservation.webp",
+    Elation: "/images/paths/elation.png",
+    Erudition: "/images/paths/erudition.webp",
+    Hunt: "/images/paths/hunt.webp",
+    Abundance: "/images/paths/abundance.webp",
+    Preservation: "/images/paths/preservation.webp",
 };
 </script>
 
 <template>
     <section class="char-section">
         <div class="char-container">
-
             <!-- Header -->
             <div class="char-header">
                 <h2 class="char-title">Characters</h2>
@@ -45,18 +44,10 @@ const pathIcons: Record<string, string> = {
 
             <!-- Grid -->
             <div class="char-grid">
-                <div
-                    v-for="char in characters"
-                    :key="char.name"
-                    class="char-card"
-                >
+                <div v-for="char in characters" :key="char.name" class="char-card">
                     <!-- Image -->
                     <div class="char-img-wrap">
-                        <img
-                            :src="char.image"
-                            :alt="char.name"
-                            class="char-img"
-                        />
+                        <img :src="char.image" :alt="char.name" class="char-img" />
                     </div>
 
                     <!-- Info -->
@@ -64,19 +55,11 @@ const pathIcons: Record<string, string> = {
                         <span class="char-name">{{ char.name }}</span>
                         <div class="char-meta">
                             <div class="char-element">
-                                <img
-                                    :src="elementIcons[char.element]"
-                                    :alt="char.element"
-                                    class="char-element-icon"
-                                />
+                                <img :src="elementIcons[char.element]" :alt="char.element" class="char-element-icon" />
                                 <span>{{ char.element }}</span>
                             </div>
                             <div class="char-path">
-                                <img
-                                    :src="pathIcons[char.path]"
-                                    :alt="char.path"
-                                    class="char-path-icon"
-                                />
+                                <img :src="pathIcons[char.path]" :alt="char.path" class="char-path-icon" />
                                 <span>{{ char.path }}</span>
                             </div>
                         </div>
@@ -88,7 +71,6 @@ const pathIcons: Record<string, string> = {
             <div class="char-footer">
                 <a href="#" class="char-btn">View All Characters</a>
             </div>
-
         </div>
     </section>
 </template>
@@ -133,11 +115,15 @@ const pathIcons: Record<string, string> = {
 }
 
 @media (min-width: 640px) {
-    .char-grid { grid-template-columns: repeat(3, 1fr); }
+    .char-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (min-width: 1024px) {
-    .char-grid { grid-template-columns: repeat(4, 1fr); }
+    .char-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 /* Card */
@@ -204,7 +190,6 @@ const pathIcons: Record<string, string> = {
     object-fit: contain;
 }
 
-
 .char-path {
     display: flex;
     align-items: center;
@@ -238,7 +223,9 @@ const pathIcons: Record<string, string> = {
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
-    transition: background-color 0.2s, color 0.2s;
+    transition:
+        background-color 0.2s,
+        color 0.2s;
 }
 
 .char-btn:hover {
@@ -246,4 +233,3 @@ const pathIcons: Record<string, string> = {
     color: #020617;
 }
 </style>
-
