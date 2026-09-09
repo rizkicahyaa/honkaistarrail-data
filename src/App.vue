@@ -2,6 +2,7 @@
 import Navbar from "./components/Navbar.vue";
 import HeroCarousel from "./components/HeroCarousel.vue";
 import CharacterSection from "./components/CharacterSection.vue";
+import PathSection from "./components/PathSection.vue";
 </script>
 
 <template>
@@ -9,5 +10,6 @@ import CharacterSection from "./components/CharacterSection.vue";
         <Navbar />
         <HeroCarousel />
         <CharacterSection />
+        <PathSection />
     </div>
 </template>

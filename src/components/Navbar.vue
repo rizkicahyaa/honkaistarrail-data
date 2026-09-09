@@ -6,8 +6,8 @@ const isMenuOpen = ref(false);
 const navLinks = [
     { label: "Home", href: "#" },
     { label: "Characters", href: "#" },
-    { label: "Light Cones", href: "#" },
-    { label: "Relics", href: "#" },
+    { label: "Path", href: "#" },
+    { label: "Aeon", href: "#" },
 ];
 </script>
 
@@ -23,22 +23,13 @@ const navLinks = [
 
                 <!-- Desktop Links -->
                 <div class="navbar-links">
-                    <a
-                        v-for="link in navLinks"
-                        :key="link.label"
-                        :href="link.href"
-                        class="nav-link"
-                    >
+                    <a v-for="link in navLinks" :key="link.label" :href="link.href" class="nav-link">
                         {{ link.label }}
                     </a>
                 </div>
 
                 <!-- Mobile Hamburger -->
-                <button
-                    class="navbar-hamburger"
-                    @click="isMenuOpen = !isMenuOpen"
-                    aria-label="Toggle menu"
-                >
+                <button class="navbar-hamburger" @click="isMenuOpen = !isMenuOpen" aria-label="Toggle menu">
                     <svg v-if="!isMenuOpen" class="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -52,13 +43,7 @@ const navLinks = [
         <!-- Mobile Menu -->
         <div v-if="isMenuOpen" class="mobile-menu">
             <div class="mobile-menu-inner">
-                <a
-                    v-for="link in navLinks"
-                    :key="link.label"
-                    :href="link.href"
-                    class="mobile-nav-link"
-                    @click="isMenuOpen = false"
-                >
+                <a v-for="link in navLinks" :key="link.label" :href="link.href" class="mobile-nav-link" @click="isMenuOpen = false">
                     {{ link.label }}
                 </a>
             </div>
@@ -86,11 +71,15 @@ const navLinks = [
 }
 
 @media (min-width: 640px) {
-    .navbar-container { padding: 0 1.5rem; }
+    .navbar-container {
+        padding: 0 1.5rem;
+    }
 }
 
 @media (min-width: 1024px) {
-    .navbar-container { padding: 0 2rem; }
+    .navbar-container {
+        padding: 0 2rem;
+    }
 }
 
 .navbar-inner {
@@ -128,7 +117,9 @@ const navLinks = [
 }
 
 @media (min-width: 768px) {
-    .navbar-links { display: flex; }
+    .navbar-links {
+        display: flex;
+    }
 }
 
 .nav-link {
@@ -138,7 +129,9 @@ const navLinks = [
     font-size: 0.875rem;
     font-weight: 500;
     text-decoration: none;
-    transition: color 0.2s, background-color 0.2s;
+    transition:
+        color 0.2s,
+        background-color 0.2s;
 }
 
 .nav-link:hover {
@@ -155,7 +148,9 @@ const navLinks = [
     border: none;
     background: transparent;
     cursor: pointer;
-    transition: color 0.2s, background-color 0.2s;
+    transition:
+        color 0.2s,
+        background-color 0.2s;
 }
 
 .navbar-hamburger:hover {
@@ -169,7 +164,9 @@ const navLinks = [
 }
 
 @media (min-width: 768px) {
-    .navbar-hamburger { display: none; }
+    .navbar-hamburger {
+        display: none;
+    }
 }
 
 /* Mobile Menu */
@@ -179,7 +176,9 @@ const navLinks = [
 }
 
 @media (min-width: 768px) {
-    .mobile-menu { display: none; }
+    .mobile-menu {
+        display: none;
+    }
 }
 
 .mobile-menu-inner {
@@ -197,7 +196,9 @@ const navLinks = [
     font-size: 0.875rem;
     font-weight: 500;
     text-decoration: none;
-    transition: color 0.2s, background-color 0.2s;
+    transition:
+        color 0.2s,
+        background-color 0.2s;
 }
 
 .mobile-nav-link:hover {
