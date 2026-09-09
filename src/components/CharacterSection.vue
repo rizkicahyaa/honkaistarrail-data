@@ -133,6 +133,7 @@ const pathIcons: Record<string, string> = {
     border-radius: 0.75rem;
     overflow: hidden;
     cursor: pointer;
+    transition: border-color 0.2s ease;
 }
 
 /* Image */
@@ -148,11 +149,11 @@ const pathIcons: Record<string, string> = {
     height: 100%;
     object-fit: cover;
     object-position: top;
-    transition: transform 0.5s ease;
 }
 
-.char-card:hover .char-img {
-    transform: scale(1.1);
+/* buat animasi hover border card bukan image */
+.char-card:hover {
+    border-color: #fbbf24;
 }
 
 /* Info */
