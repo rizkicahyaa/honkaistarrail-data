@@ -49,7 +49,7 @@ const paths = [
 </script>
 
 <template>
-    <section class="path-section">
+    <section id="paths" class="path-section">
         <div class="path-container">
 
             <!-- Header -->

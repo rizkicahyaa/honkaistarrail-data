@@ -34,7 +34,7 @@ const pathIcons: Record<string, string> = {
 </script>
 
 <template>
-    <section class="char-section">
+    <section id="characters" class="char-section">
         <div class="char-container">
             <!-- Header -->
             <div class="char-header">

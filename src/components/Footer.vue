@@ -1,16 +1,12 @@
 <script setup lang="ts">
 const navLinks = [
-    { label: "Home",         href: "#" },
-    { label: "Characters",   href: "#" },
-    { label: "Light Cones",  href: "#" },
-    { label: "Relics",       href: "#" },
+    { label: "Home", href: "#" },
+    { label: "Characters", href: "#" },
+    { label: "Light Cones", href: "#" },
+    { label: "Relics", href: "#" },
 ];
 
-const paths = [
-    "Destruction", "Hunt", "Erudition",
-    "Harmony", "Nihility", "Preservation",
-    "Abundance", "Remembrance", "Elation",
-];
+const paths = ["Destruction", "Hunt", "Erudition", "Harmony", "Nihility", "Preservation", "Abundance", "Remembrance", "Elation"];
 
 const currentYear = new Date().getFullYear();
 </script>
@@ -18,19 +14,15 @@ const currentYear = new Date().getFullYear();
 <template>
     <footer class="footer">
         <div class="footer-container">
-
             <!-- Top -->
             <div class="footer-top">
-
                 <!-- Brand -->
                 <div class="footer-brand">
                     <div class="footer-logo-wrap">
                         <img src="/hsr-logo.webp" alt="Honkai: Star Rail" class="footer-logo" />
                         <span class="footer-brand-name">Honkai: Star Rail</span>
                     </div>
-                    <p class="footer-brand-desc">
-                        A fan-made database for Honkai: Star Rail — characters, light cones, relics, and more.
-                    </p>
+                    <p class="footer-brand-desc">A fan-made database for Honkai: Star Rail — characters, light cones, relics, and more.</p>
                 </div>
 
                 <!-- Nav Links -->
@@ -52,7 +44,6 @@ const currentYear = new Date().getFullYear();
                         </li>
                     </ul>
                 </div>
-
             </div>
 
             <!-- Divider -->
@@ -60,14 +51,9 @@ const currentYear = new Date().getFullYear();
 
             <!-- Bottom -->
             <div class="footer-bottom">
-                <p class="footer-copy">
-                    &copy; {{ currentYear }} Honkai: Star Rail Database. Fan-made, not affiliated with HoYoverse.
-                </p>
-                <p class="footer-hoyoverse">
-                    Honkai: Star Rail is a trademark of HoYoverse.
-                </p>
+                <p class="footer-copy">&copy; {{ currentYear }} Honkai: Star Rail Database. Fan-made, not affiliated with HoYoverse.</p>
+                <p class="footer-hoyoverse">Made by Me (rizki)</p>
             </div>
-
         </div>
     </footer>
 </template>
@@ -94,11 +80,15 @@ const currentYear = new Date().getFullYear();
 }
 
 @media (min-width: 640px) {
-    .footer-top { grid-template-columns: 1fr 1fr; }
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (min-width: 1024px) {
-    .footer-top { grid-template-columns: 2fr 1fr 1fr; }
+    .footer-top {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
 }
 
 /* Brand */

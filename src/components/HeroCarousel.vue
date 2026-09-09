@@ -39,7 +39,7 @@ onUnmounted(stopAuto);
 </script>
 
 <template>
-    <section class="gallery" @mouseenter="stopAuto" @mouseleave="startAuto">
+    <section id="home" class="gallery" @mouseenter="stopAuto" @mouseleave="startAuto">
         <!-- Main Image -->
         <div class="gallery-main">
             <img :src="slides[current].src" :alt="slides[current].alt" class="gallery-img" />

@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar.vue";
 import HeroCarousel from "./components/HeroCarousel.vue";
 import CharacterSection from "./components/CharacterSection.vue";
 import PathSection from "./components/PathSection.vue";
-import AppFooter from "./components/AppFooter.vue";
+import Footer from "./components/Footer.vue";
 </script>
 
 <template>
@@ -12,6 +12,6 @@ import AppFooter from "./components/AppFooter.vue";
         <HeroCarousel />
         <CharacterSection />
         <PathSection />
-        <AppFooter />
+        <Footer />
     </div>
 </template>

@@ -4,11 +4,20 @@ import { ref } from "vue";
 const isMenuOpen = ref(false);
 
 const navLinks = [
-    { label: "Home", href: "#" },
-    { label: "Characters", href: "#" },
-    { label: "Path", href: "#" },
-    { label: "Aeon", href: "#" },
+    { label: "Home",       id: "home" },
+    { label: "Characters", id: "characters" },
+    { label: "Path",       id: "paths" },
+    { label: "Aeon",       id: "aeon" },
 ];
+
+function scrollTo(id: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const offset = 64; // tinggi navbar fixed
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: "smooth" });
+    isMenuOpen.value = false;
+}
 </script>
 
 <template>
@@ -23,9 +32,14 @@ const navLinks = [
 
                 <!-- Desktop Links -->
                 <div class="navbar-links">
-                    <a v-for="link in navLinks" :key="link.label" :href="link.href" class="nav-link">
+                    <button
+                        v-for="link in navLinks"
+                        :key="link.label"
+                        class="nav-link"
+                        @click="scrollTo(link.id)"
+                    >
                         {{ link.label }}
-                    </a>
+                    </button>
                 </div>
 
                 <!-- Mobile Hamburger -->
@@ -43,9 +57,14 @@ const navLinks = [
         <!-- Mobile Menu -->
         <div v-if="isMenuOpen" class="mobile-menu">
             <div class="mobile-menu-inner">
-                <a v-for="link in navLinks" :key="link.label" :href="link.href" class="mobile-nav-link" @click="isMenuOpen = false">
+                <button
+                    v-for="link in navLinks"
+                    :key="link.label"
+                    class="mobile-nav-link"
+                    @click="scrollTo(link.id)"
+                >
                     {{ link.label }}
-                </a>
+                </button>
             </div>
         </div>
     </nav>
@@ -129,6 +148,9 @@ const navLinks = [
     font-size: 0.875rem;
     font-weight: 500;
     text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
     transition:
         color 0.2s,
         background-color 0.2s;
